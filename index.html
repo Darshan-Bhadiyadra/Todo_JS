@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo Javascript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color:#F5F5F5;
+        }
+
+        h1 {
+            font-size: 136px;
+            color: #D6C5EB;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul .checked {
+            text-decoration: line-through;
+            font-weight: 600;
+            color: rgb(175, 175, 175);
+        }
+
+        li {
+            width: 23%;
+            border: 1px rgb(53, 37, 37) solid;
+            padding: 10px 15px;
+            font-size: 18px;
+            margin-top: 0.8px;
+            border-radius: 3px;
+        }
+
+        input {
+            margin-top: 30px;
+            padding: 10px 15px;
+            width: 23%;
+            font-size: 18px;
+            border: 2px rgb(165, 56, 165) solid;
+            border-radius: 5px;
+        }
+       
+        .main {
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="main">
+            <h1>todos</h1>
+            <input type="text" id="text" placeholder="Enter your todo" onkeypress="gettext(event)">
+            <ul id="gt"></ul>
+        </div>
+    </center>
+<script>
+    function gettext(event) {
+        if (event.key === 'Enter') {
+            let gettext = document.getElementById('text');
+            let ultext = document.getElementById('gt');
+            let inptex = gettext.value;
+
+            if (inptex) {
+                let li = document.createElement('li');
+                li.appendChild(document.createTextNode(inptex));
+                ultext.appendChild(li);
+                gettext.value = '';
+            }
+        }
+    }
+
+    let strike = document.querySelector('.main ul');
+    strike.addEventListener('click', function (check) {
+        if (check.target.tagName === 'LI') {
+            check.target.classList.toggle('checked');
+        }
+    });
+</script>
+</body>
+</html>
